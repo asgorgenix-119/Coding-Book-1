@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ultra Coding Book</title>
+
+<style>
+body {
+  margin:0;
+  font-family: Arial;
+  background:#0f172a;
+  color:white;
+}
+
+header {
+  background:#020617;
+  padding:15px;
+  text-align:center;
+  color:#38bdf8;
+  font-size:22px;
+}
+
+.container {
+  padding:20px;
+}
+
+.section {
+  background:#1e293b;
+  padding:15px;
+  margin:10px 0;
+  border-radius:10px;
+}
+
+.code {
+  background:black;
+  color:#22c55e;
+  padding:10px;
+  border-radius:8px;
+  font-family:monospace;
+}
+
+textarea {
+  width:100%;
+  height:120px;
+  margin-top:10px;
+}
+
+button {
+  padding:8px 15px;
+  margin-top:10px;
+  cursor:pointer;
+}
+
+input {
+  width:100%;
+  padding:10px;
+  margin-bottom:10px;
+}
+
+.light {
+  background:white;
+  color:black;
+}
+</style>
+
+</head>
+
+<body>
+
+<header>📘 ULTRA CODING BOOK 🚀</header>
+
+<div class="container">
+
+<input type="text" placeholder="Search..." onkeyup="search(this.value)">
+
+<button onclick="toggleMode()">🌙 Mode</button>
+<button onclick="window.print()">📄 Download PDF</button>
+
+<!-- SYMBOLS -->
+<div class="section">
+<h2>Symbols + Example</h2>
+
+<p><b>+</b> Add</p>
+<p><b>-</b> Subtract</p>
+<p><b>*</b> Multiply</p>
+<p><b>/</b> Divide</p>
+<p><b>%</b> Remainder</p>
+
+<div class="code">
+a=10
+b=3
+print(a+b)
+</div>
+</div>
+
+<!-- LANGUAGE GUIDE -->
+<div class="section">
+<h2>Language Guide</h2>
+
+<p><b>Python</b> → simple, no ;</p>
+<p><b>C/Java</b> → ; required</p>
+<p><b>HTML</b> → &lt;tags&gt;</p>
+
+<div class="code">
+# Python
+a=10
+</div>
+</div>
+
+<!-- CASE -->
+<div class="section">
+<h2>Capital vs Small</h2>
+
+<p>A ≠ a (Case Sensitive)</p>
+
+<div class="code">
+name="ibrahim"
+Name="khan"
+</div>
+</div>
+
+<!-- LIVE EDITOR -->
+<div class="section">
+<h2>Live Code Editor (JS)</h2>
+
+<textarea id="code">
+console.log("Hello Ibrahim");
+</textarea>
+
+<button onclick="runCode()">Run Code</button>
+
+<div class="code" id="output"></div>
+</div>
+
+<!-- QUIZ -->
+<div class="section">
+<h2>Quiz</h2>
+
+<p>% ka use?</p>
+<button onclick="check(true)">Remainder</button>
+<button onclick="check(false)">Add</button>
+
+<p id="score">Score: 0</p>
+</div>
+
+</div>
+
+<script>
+
+function search(val){
+ let v=val.toLowerCase();
+ document.querySelectorAll('.section').forEach(sec=>{
+  sec.style.display = sec.innerText.toLowerCase().includes(v) ? "block":"none";
+ });
+}
+
+function toggleMode(){
+ document.body.classList.toggle("light");
+}
+
+function runCode(){
+ let code = document.getElementById("code").value;
+ try{
+   let result = eval(code);
+   document.getElementById("output").innerText = result || "Executed";
+ }catch(e){
+   document.getElementById("output").innerText = e;
+ }
+}
+
+let score=0;
+function check(correct){
+ if(correct){
+  score++;
+  alert("Correct");
+ }else{
+  alert("Wrong");
+ }
+ document.getElementById("score").innerText="Score: "+score;
+}
+
+</script>
+
+</body>
+</html>
